@@ -4,8 +4,13 @@ include "style.php";
 include "init.php";
 
 
-function start($argv)
+function start($argv, $argc)
 {
+    if ($argc<=1)
+    {
+        echo "Error, No commands entered, Try -help\n";
+        exit(84);
+    }
     $user_args = verify_args($argv);
     merge_no_option($user_args);
 }
@@ -20,8 +25,8 @@ function help()
     echo "\033[1m-s, --output-style=STYLE\n";
     echo "\t\t\033[0mTo select the name of the CSS file.\n\n";
     echo "\t\033[1m-i, --output-image=IMAGE\n\t\t\033[0mT select the name of ";
-    echo "the image.\n\n\t\033[1mhelp\n\t\t\033[0mTo view the info about ";
+    echo "the image.\n\n\t\033[1m-help\n\t\t\033[0mTo view the info about ";
     echo "the CSS Generator and visualize the command list.\n\n";
 }
 
-start($argv);
+start($argv, $argc);
