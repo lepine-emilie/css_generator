@@ -27,9 +27,10 @@ function verify_args($argv)
     {
         $default["output-style"] = $argv[array_search("-s",$argv)+1];
     }
-    if (in_array("help",$argv))
+    if (in_array("-help",$argv))
     {
-        $default["display-help"] = true;
+        help();
+        exit(0);
     }
     $default["input-dir"] = $argv[1];
     return $default;
